@@ -14,7 +14,7 @@ module.exports = function config(src) {
     },
     output: {
       filename: 'scripts/[name].bundle.js',
-
+      chunkFilename: 'scripts/[id].[name].chunk.js',
       path: resolve(src, dist)
     },
     module: {

@@ -1,19 +1,13 @@
 
 
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import loadAbout from 'bundle-loader?lazy!../about';
-import loadTopics from 'bundle-loader?lazy!../topics'
+import { Link, Switch, Route } from 'react-router-dom';
 
 import Home from '../home';
+import Loading from '../Loading';
 
-class App extends React.PureComponent {
-
-  componentDidMount() {
-    loadAbout(() => {});
-    loadTopics(() => {});
-  }
-
+import { asyncComponent } from '../../components/asyncComponent';
+class App extends React.Component {
   render() {
     return (
       <div>
@@ -21,22 +15,18 @@ class App extends React.PureComponent {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/about'>About</Link></li>
           <li><Link to='/topics'>Topics</Link></li>
+          <li><Link to='/contact'>contact</Link></li>
         </ul>
-
-        <hr />
-
-        <Route exact path='/' component={Home}></Route>
-        <Route path='/about' component={About}></Route>
-        <Route path='/topics' component={Topics}></Route>
-
+        <Switch>
+          <Route exact path='/' component={Home}></Route>
+          <Route path='/about' component={asyncComponent({ loader: () => import('../about'), loading: Loading })}></Route>
+          <Route path='/topics' component={asyncComponent({ loader: () => import('../topics') })}></Route>
+          <Route path='/contact' component={asyncComponent({ loader: () => import('../contact'), loading: Loading })} />
+          <Route component={asyncComponent({ loader: () => import('../NoMatch') })} />
+        </Switch>
       </div>
     )
   }
 }
-
-
-
-
-
 
 export default App;
