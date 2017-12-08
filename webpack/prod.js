@@ -11,7 +11,8 @@ const target = getTarget();
 const config = merge(common(target), {
   output: {
     publicPath: '/',
-    filename: 'scripts/[name].[chunkhash].js'
+    filename: 'scripts/[name].[chunkhash].js',
+    chunkFilename: 'scripts/[name].chunk.[chunkhash].js',
   },
   plugins: [
     new UglifyJSPlugin({

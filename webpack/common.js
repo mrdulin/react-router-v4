@@ -17,6 +17,11 @@ module.exports = function config(src) {
       chunkFilename: 'scripts/[id].[name].chunk.js',
       path: resolve(src, dist)
     },
+    resolve: {
+      alias: {
+        common: resolve('src/common')
+      }
+    },
     module: {
       rules: [
         {
