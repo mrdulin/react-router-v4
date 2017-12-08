@@ -6,7 +6,7 @@ import { Link, Switch, Route } from 'react-router-dom';
 import Home from '../home';
 import Loading from '../Loading';
 
-import { asyncComponent } from 'common/components/asyncComponent';
+import { asyncComponent } from 'common/components/AsyncComponent';
 class App extends React.Component {
   render() {
     return (
