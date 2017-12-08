@@ -2,12 +2,18 @@
 
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
+import loadAbout from 'bundle-loader?lazy!../about';
+import loadTopics from 'bundle-loader?lazy!../topics'
 
 import Home from '../home';
-import About from '../about';
-import Topics from '../topics';
 
-class App extends React.Component {
+class App extends React.PureComponent {
+
+  componentDidMount() {
+    loadAbout(() => {});
+    loadTopics(() => {});
+  }
+
   render() {
     return (
       <div>
@@ -24,9 +30,13 @@ class App extends React.Component {
         <Route path='/topics' component={Topics}></Route>
 
       </div>
-    );
+    )
   }
 }
+
+
+
+
 
 
 export default App;

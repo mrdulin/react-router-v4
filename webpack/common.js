@@ -14,6 +14,7 @@ module.exports = function config(src) {
     },
     output: {
       filename: 'scripts/[name].bundle.js',
+
       path: resolve(src, dist)
     },
     module: {
