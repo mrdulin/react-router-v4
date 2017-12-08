@@ -1,5 +1,5 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const webpack = require('webpack');
 const { resolve } = require('./util');
 const pkg = require('../package.json');
@@ -42,9 +42,6 @@ module.exports = function config(src) {
     plugins: [
       new CleanWebpackPlugin([dist], {
         root: src
-      }),
-      new HtmlWebpackPlugin({
-        template: src + '/index.html'
       }),
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',

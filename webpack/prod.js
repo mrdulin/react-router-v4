@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const AppCachePlugin = require('appcache-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const common = require('./common');
 const { resolve, getTarget } = require('./util');
@@ -15,6 +16,14 @@ const config = merge(common(target), {
     chunkFilename: 'scripts/[name].chunk.[chunkhash].js',
   },
   plugins: [
+    new AppCachePlugin(),
+    new HtmlWebpackPlugin({
+      template: target + '/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      }
+    }),
     new UglifyJSPlugin({
       sourceMap: true
     }),
@@ -24,8 +33,7 @@ const config = merge(common(target), {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new CompressionPlugin(),
-    new AppCachePlugin()
+    new CompressionPlugin()
   ]
 });
 

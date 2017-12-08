@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./common');
 const { resolve, getTarget } = require('./util');
 
@@ -20,6 +21,9 @@ const config = merge(common(target), {
     hot: true
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: src + '/index.html'
+    }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
