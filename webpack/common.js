@@ -26,6 +26,10 @@ module.exports = function config(src) {
               loader: 'babel-loader'
             }
           ]
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
         }
       ]
     },

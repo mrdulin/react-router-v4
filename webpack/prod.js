@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+const AppCachePlugin = require('appcache-webpack-plugin');
 
 const common = require('./common');
 const { resolve, getTarget } = require('./util');
@@ -22,7 +23,8 @@ const config = merge(common(target), {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new CompressionPlugin({})
+    new CompressionPlugin(),
+    new AppCachePlugin()
   ]
 });
 

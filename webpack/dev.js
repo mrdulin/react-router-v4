@@ -1,4 +1,5 @@
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 const common = require('./common');
 const { resolve, getTarget } = require('./util');
 
@@ -15,8 +16,13 @@ const config = merge(common(target), {
   devServer: {
     contentBase: target + '/public',
     port,
-    host: '0.0.0.0'
-  }
+    host: '0.0.0.0',
+    hot: true
+  },
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });
 
 module.exports = config;

@@ -1,31 +1,28 @@
+require("react-hot-loader/patch")
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Link, Route, Redirect} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import Home from './modules/home/main';
-import About from './modules/about/main';
-import Topics from './modules/topics/main';
+import { AppContainer } from 'react-hot-loader'
 
-const App = () => (
-  <BrowserRouter>
-    <div>
-      <ul>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/topics'>Topics</Link></li>
-      </ul>
+import App from './containers/app';
 
-      <hr />
+import './style.css';
 
-      <Route exact path='/' component={Home}></Route>
-      <Route path='/about' component={About}></Route>
-      <Route path='/topics' component={Topics}></Route>
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <BrowserRouter>
+        <Component />
+      </BrowserRouter>
+    </AppContainer>,
+    document.getElementById('app')
+  );
+}
 
-    </div>
-  </BrowserRouter>
-);
+render(App);
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+if (module.hot) {
+  module.hot.accept('./containers/app', () => { render(App) })
+}
