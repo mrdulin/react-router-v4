@@ -14,3 +14,14 @@
 那么配合`appcache`或者浏览器的静态文件缓存特性，修改`about`模块后发布，应用将只会去服务器重新拉取`2.chunk.js`和`manifest.js`。
 
 3. 使用`appcache-webpack-plugin`可以将生成的`chunk`文件名写入到`manifest.appcache`文件中
+
+## 配合`appcache`
+
+1. 首次加载某个页面，缓存未命中，走网络请求，从服务器拉取`vendor`, `app`和页面相应的`chunk`文件，`appcache`将静态资源缓存到本地`disk`的目录中
+
+2. 再次进入相同的页面，有`appcache`静态资源缓存，缓存命中，走本地缓存资源
+
+3. 应用有新的迭代发布，`webpack`打包编译时，只有被修改文件的`hash`改变。`appcache`将比对`manifest.appcache`文件中`CACHE MANIFEST`描述字段下
+的静态资源名称和服务器上最新的静态资源名称。对于`hash`有变化的资源文件，不走本地缓存，再次走网络请求从服务器拉取。`hash`未改变的文件，本地缓存命中，
+使用本地缓存文件。
+
