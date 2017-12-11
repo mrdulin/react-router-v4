@@ -8,7 +8,7 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './containers/app';
 import Loading from './containers/Loading';
-import { asyncComponent } from 'common/components/AsyncComponent/index-v2';
+import { asyncComponent } from 'common/components/AsyncComponent';
 
 import './style.css';
 
@@ -22,14 +22,15 @@ const render = Component => {
               loader: require('./containers/home/main').default,
             })} />
             <Route path='/about' component={asyncComponent({
-              loader: require('./containers/about/main').default
+              loader: require('./containers/about/main').default,
+              loading: Loading
             })} />
+            {/* 在main文件中进行错误处理 */}
             <Route path='/topics' component={asyncComponent({
               loader: require('./containers/topics/main').default
             })} />
             <Route path='/contact' component={asyncComponent({
-              loader: require('./containers/contact/main').default,
-              loading: Loading
+              loader: require('./containers/contact/main').default
             })} />
             <Route path='/contact' component={asyncComponent({
               loader: require('./containers/NoMatch/main').default,

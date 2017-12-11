@@ -3,7 +3,7 @@ export default () => {
     require.ensure(['./'], function (require) {
       resolve(require('./'));
     }, function (err) {
-      console.err(err);
+      console.error(err);
       reject(err);
     }, 'about');
   })
