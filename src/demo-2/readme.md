@@ -11,5 +11,6 @@
 
 左侧是第一次打包编译的输出，右侧是修改`about`模块的代码，再次打包编译的输出。可以看到，只有`2.chunk.js`和`manifest.js`的`hash`值发生了变化。
 
-那么配合`appCache`或者浏览器的静态文件缓存特性，修改`about`模块后发布，应用将只会去服务器重新拉取`2.chunk.js`和`manifest.js`。
+那么配合`appcache`或者浏览器的静态文件缓存特性，修改`about`模块后发布，应用将只会去服务器重新拉取`2.chunk.js`和`manifest.js`。
 
+3. 使用`appcache-webpack-plugin`可以将生成的`chunk`文件名写入到`manifest.appcache`文件中
