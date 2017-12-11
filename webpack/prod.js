@@ -13,7 +13,7 @@ const config = merge(common(target), {
   output: {
     publicPath: '/',
     filename: 'scripts/[name].[chunkhash].js',
-    chunkFilename: 'scripts/[name].chunk.[chunkhash].js',
+    chunkFilename: 'scripts/[id].[name].[chunkhash].js',
   },
   plugins: [
     new AppCachePlugin(),

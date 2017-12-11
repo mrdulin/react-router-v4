@@ -7,6 +7,14 @@ import Home from '../home';
 import Loading from '../Loading';
 
 import { asyncComponent } from 'common/components/AsyncComponent';
+
+
+// function loader(path, name) {
+//   return () => import(/* webpackChunkName: `${name}` */`${path}`);
+// }
+
+const loader = (path, name) => () => import(/* webpackChunkName: `${name}` */`${path}`)
+
 class App extends React.Component {
   render() {
     return (
@@ -19,10 +27,20 @@ class App extends React.Component {
         </ul>
         <Switch>
           <Route exact path='/' component={Home}></Route>
-          <Route path='/about' component={asyncComponent({ loader: () => import('../about'), loading: Loading })}></Route>
-          <Route path='/topics' component={asyncComponent({ loader: () => import('../topics') })}></Route>
-          <Route path='/contact' component={asyncComponent({ loader: () => import('../contact'), loading: Loading })} />
-          <Route component={asyncComponent({ loader: () => import('../NoMatch') })} />
+          <Route path='/about' component={asyncComponent({
+            loader: () => import(/* webpackChunkName: 'about' */'../about'),
+            loading: Loading
+          })}></Route>
+          <Route path='/topics' component={asyncComponent({
+            loader: () => import(/* webpackChunkName: 'topics' */'../topics')
+          })}></Route>
+          <Route path='/contact' component={asyncComponent({
+            loader: () => import(/* webpackChunkName: 'contact' */'../contact'),
+            loading: Loading
+          })} />
+          <Route component={asyncComponent({
+            loader: () => import(/* webpackChunkName: 'NoMatch' */'../NoMatch')
+          })} />
         </Switch>
       </div>
     )
