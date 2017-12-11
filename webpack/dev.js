@@ -22,7 +22,7 @@ const config = merge(common(target), {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: src + '/index.html'
+      template: target + '/index.html'
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()

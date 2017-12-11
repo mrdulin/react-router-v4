@@ -2,6 +2,6 @@ import React from 'react';
 
 export default () => (
   <div>
-    <h2>About</h2>
+    <h2>About Me</h2>
   </div>
 )
