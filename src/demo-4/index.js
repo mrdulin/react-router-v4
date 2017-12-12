@@ -12,15 +12,24 @@ import { asyncComponent } from 'common/components/AsyncComponent';
 
 import './style.css';
 
-let loadComponentWithContext = moduleName => {
+//不支持动态chunkname
+//https://github.com/webpack-contrib/bundle-loader/issues/31
+const loadModule = moduleName => {
   const defaultFile = 'index.js';
   return new Promise((resolve, reject) => {
-    require(`bundle-loader!./containers/${moduleName}/${defaultFile}`)(function (module) {
+    const bundle = require(`bundle-loader!./containers/${moduleName}/${defaultFile}`);
+    bundle(function (module) {
       const Component = module.default;
       resolve(Component);
     });
   });
 };
+
+// const bundle = require(`bundle-loader?name=about!./containers/about/index.js`);
+// bundle(function (module) {
+//   const Component = module.default;
+//   console.log(Component);
+// });
 
 const render = Component => {
   ReactDOM.render(
@@ -29,20 +38,20 @@ const render = Component => {
         <Component>
           <Switch>
             <Route exact path='/' component={asyncComponent({
-              loader: () => loadComponentWithContext('home')
+              loader: () => loadModule('home')
             })} />
             <Route path='/about' component={asyncComponent({
-              loader: () => loadComponentWithContext('about')
+              loader: () => loadModule('about')
             })} />
             {/* 在main文件中进行错误处理 */}
             <Route path='/topics' component={asyncComponent({
-              loader: () => loadComponentWithContext('topics')
+              loader: () => loadModule('topics')
             })} />
             <Route path='/contact' component={asyncComponent({
-              loader: () => loadComponentWithContext('contact')
+              loader: () => loadModule('contact')
             })} />
             <Route path='/contact' component={asyncComponent({
-              loader: () => loadComponentWithContext('NoMatch')
+              loader: () => loadModule('NoMatch')
             })} />
           </Switch>
         </Component>
