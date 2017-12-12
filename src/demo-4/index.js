@@ -12,8 +12,12 @@ import { asyncComponent } from 'common/components/AsyncComponent';
 
 import './style.css';
 
-//不支持动态chunkname
+//几个问题：
+
+//1. 不支持动态chunkname
 //https://github.com/webpack-contrib/bundle-loader/issues/31
+//2. 不支持错误处理，而且对webpack3，有点过时
+//https://github.com/webpack-contrib/bundle-loader/issues/66
 const loadModule = moduleName => {
   const defaultFile = 'index.js';
   return new Promise((resolve, reject) => {
@@ -25,6 +29,7 @@ const loadModule = moduleName => {
   });
 };
 
+// 这种方式指定name属性可以正常生成相应的chunkName
 // const bundle = require(`bundle-loader?name=about!./containers/about/index.js`);
 // bundle(function (module) {
 //   const Component = module.default;
