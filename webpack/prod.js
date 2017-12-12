@@ -16,7 +16,7 @@ const config = merge(common(target), {
     chunkFilename: 'scripts/[id].[name].[chunkhash].js',
   },
   plugins: [
-    new AppCachePlugin(),
+    // new AppCachePlugin(),
     new HtmlWebpackPlugin({
       template: target + '/index.html',
       minify: {

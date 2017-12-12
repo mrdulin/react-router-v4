@@ -15,13 +15,59 @@
 
 3. 使用`appcache-webpack-plugin`可以将生成的`chunk`文件名写入到`manifest.appcache`文件中
 
+## 配合`http`缓存
+
+使用`http-server`作为静态文件服务器，缓存头`max-age=20`
+
+1. 首次加载某个页面，缓存未命中，走网络请求，从服务器拉取`vendor`, `app`和页面相应的`chunk`文件，`http`缓存将静态资源缓存，开始走`http`缓存流程。
+
+缓存流程如图1-1, 1-2, 1-3
+
+1-1
+![1-1](./docs/httpcache/1-1.png)
+
+1-2
+![1-2](./docs/httpcache/1-2.png)
+
+1-3
+![1-3](./docs/httpcache/1-3.png)
+
+2. 修改`about`页面，打包编译发布，再次进入相同的页面
+
+3. 应用有新的迭代发布，`webpack`打包编译时，只有被修改文件的`hash`改变。对于`hash`有变化的资源文件，http缓存未命中，再次走网络请求从服务器拉取。
+`hash`未改变的文件，本地缓存命中，使用`http`缓存文件。
+
 ## 配合`appcache`
 
-1. 首次加载某个页面，缓存未命中，走网络请求，从服务器拉取`vendor`, `app`和页面相应的`chunk`文件，`appcache`将静态资源缓存到本地`disk`的目录中
+实验步骤：
 
-2. 再次进入相同的页面，有`appcache`静态资源缓存，缓存命中，走本地缓存资源
+1. 打包编译，生成静态资源和`manifest.appcache`文件，在浏览器首次访问
 
-3. 应用有新的迭代发布，`webpack`打包编译时，只有被修改文件的`hash`改变。`appcache`将比对`manifest.appcache`文件中`CACHE MANIFEST`描述字段下
-的静态资源名称和服务器上最新的静态资源名称。对于`hash`有变化的资源文件，不走本地缓存，再次走网络请求从服务器拉取。`hash`未改变的文件，本地缓存命中，
-使用本地缓存文件。
+![浏览器首次访问](./docs/appcache/1.png)
 
+**查看`appcache progress event`**可知，`appcache`**全量**缓存`manifest.appcache`文件中`CACHE MANIFEST`中罗列的所有静态资源，
+
+2. 修改`about`页面的代码，再次打包编译，比对这次和首次`manifest.appcache`文件中的静态资源名称
+
+![compare-manifest](./docs/appcache/compare-manifest.png)
+
+只有`about`页面的`chunk`文件`hash`值发生变化
+
+3. 浏览器再次访问
+
+  1. 第一次进入（刷新）页面
+  
+  ![2-1](./docs/appcache/2-1.png) 
+
+  **查看`appcache progress event`**可知，`appcache`**再次全量**缓存`manifest.appcache`文件中`CACHE MANIFEST`中罗列的所有静态资源，应用使用和运行的是首次缓存的静态资源
+
+  2. 第二次进入（刷新）页面
+
+  ![2-2](./docs/appcache/2-2.png) 
+
+  应用使用和运行的是第二次缓存（最新）的静态资源
+
+
+参考链接：
+
+https://github.com/smileyby/manifest

@@ -1,0 +1,28 @@
+Hash: 23c66dd23768eedb0a9e
+Version: webpack 3.10.0
+Time: 8614ms
+                                               Asset       Size  Chunks             Chunk Names
+          scripts/0.about.248581255583aed8918b.js.gz  573 bytes          [emitted]
+             scripts/0.about.248581255583aed8918b.js     1.3 kB       0  [emitted]  about
+    scripts/2.topicsReducers.ffd4a4025f7080003dff.js  342 bytes       2  [emitted]  topicsReducers
+      scripts/3.homeReducers.02dd56ad01fb1151b634.js  334 bytes       3  [emitted]  homeReducers
+              scripts/4.home.ef733c87dd799e6e9de5.js  916 bytes       4  [emitted]  home
+   scripts/5.contactReducers.1aa6d29068b205e43b2e.js  346 bytes       5  [emitted]  contactReducers
+           scripts/6.contact.31828e2b77d799093916.js  937 bytes       6  [emitted]  contact
+     scripts/7.aboutReducers.dc34c300c092ad2cac72.js  338 bytes       7  [emitted]  aboutReducers
+              scripts/vendor.d7ca8b021fe29281f699.js     206 kB       8  [emitted]  vendor
+                scripts/main.7e92f6e06fc31238a7e7.js    7.62 kB       9  [emitted]  main
+            scripts/manifest.5eec0f12fa4c8bbf2fe2.js    1.78 kB      10  [emitted]  manifest
+                                          index.html  507 bytes          [emitted]
+            scripts/1.topics.e66130f8fb643bb3505d.js    1.87 kB       1  [emitted]  topics
+         scripts/1.topics.e66130f8fb643bb3505d.js.gz  754 bytes          [emitted]
+ scripts/2.topicsReducers.ffd4a4025f7080003dff.js.gz  265 bytes          [emitted]
+   scripts/3.homeReducers.02dd56ad01fb1151b634.js.gz  263 bytes          [emitted]
+           scripts/4.home.ef733c87dd799e6e9de5.js.gz  515 bytes          [emitted]
+scripts/5.contactReducers.1aa6d29068b205e43b2e.js.gz  264 bytes          [emitted]
+        scripts/6.contact.31828e2b77d799093916.js.gz  515 bytes          [emitted]
+  scripts/7.aboutReducers.dc34c300c092ad2cac72.js.gz  267 bytes          [emitted]
+             scripts/main.7e92f6e06fc31238a7e7.js.gz    2.18 kB          [emitted]
+         scripts/manifest.5eec0f12fa4c8bbf2fe2.js.gz    1.01 kB          [emitted]
+                                       index.html.gz  302 bytes          [emitted]
+           scripts/vendor.d7ca8b021fe29281f699.js.gz    62.2 kB          [emitted]
