@@ -3,17 +3,17 @@
 import React from 'react';
 import { Link, Switch, Route } from 'react-router-dom';
 
-import Home from '../home';
 import Loading from '../Loading';
+import { HomeModules } from '../home/async';
+import { AboutModules } from '../about/async';
+import { TopicModules } from '../topics/async';
+import { ContactModules } from '../contact/async';
+import { NoMatchModules } from '../NoMatch/async';
 
-import { asyncComponent } from 'common/components/AsyncComponent';
-
+// 不支持动态chunkName
 // function loader(path, name) {
 //   return () => import(/* webpackChunkName: `${name}` */`${path}`);
 // }
-
-const loader = (path, name) => () => import(/* webpackChunkName: `${name}` */`${path}`)
-
 class App extends React.Component {
   render() {
     return (
@@ -25,21 +25,11 @@ class App extends React.Component {
           <li><Link to='/contact'>contact</Link></li>
         </ul>
         <Switch>
-          <Route exact path='/' component={Home}></Route>
-          <Route path='/about' component={asyncComponent({
-            loader: () => import(/* webpackChunkName: 'about' */'../about'),
-            loading: Loading
-          })}></Route>
-          <Route path='/topics' component={asyncComponent({
-            loader: () => import(/* webpackChunkName: 'topics' */'../topics')
-          })}></Route>
-          <Route path='/contact' component={asyncComponent({
-            loader: () => import(/* webpackChunkName: 'contact' */'../contact'),
-            loading: Loading
-          })} />
-          <Route component={asyncComponent({
-            loader: () => import(/* webpackChunkName: 'NoMatch' */'../NoMatch')
-          })} />
+          <Route exact path='/' component={HomeModules} />
+          <Route path='/about' component={AboutModules} />
+          <Route path='/topics' component={TopicModules} />
+          <Route path='/contact' component={ContactModules} />
+          <Route component={NoMatchModules} />
         </Switch>
       </div>
     )
@@ -47,3 +37,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+

@@ -1,21 +1,25 @@
 
 require("react-hot-loader/patch")
 
+import './style.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import App from './containers/app';
-import './style.css';
+import { store } from './store';
 
 const render = Component => {
   ReactDOM.render(
-    <AppContainer>
-      <HashRouter>
-        <Component></Component>
-      </HashRouter>
-    </AppContainer>,
+    <Provider store={store}>
+      <AppContainer>
+        <HashRouter>
+          <Component></Component>
+        </HashRouter>
+      </AppContainer>
+    </Provider>,
     document.getElementById('app')
   );
 }
