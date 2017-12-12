@@ -1,10 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
+class Home extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Home</h1>
+        <p>{this.props.homeReducers.name}</p>
+      </div>
+    );
+  }
+}
 
+export default connect(
+  function mapStateToProps({ homeReducers }) {
+    return { homeReducers };
+  }
+)(Home);
 
 

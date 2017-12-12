@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 class About extends React.Component {
   render() {
-    console.log('about render: ', this.props.aboutReducers);
     return (
       <div>
         <h2>About Me</h2>
+        <p>{this.props.aboutReducers.name}</p>
       </div>
     );
   }
