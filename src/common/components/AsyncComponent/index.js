@@ -8,7 +8,8 @@ function asyncComponent(opts) {
       super(props);
 
       this.state = {
-        Component: null
+        Component: null,
+        error: false
       };
     }
 
@@ -22,18 +23,19 @@ function asyncComponent(opts) {
             }
             this.setState({ Component });
           })
-          .catch(e => {
-            let Component = () => (<div>加载失败</div>);
-            if (opts.loading) {
-              Component = opts.loading;
-            }
-            this.setState({ Component })
+          .catch(error => {
+            this.setState({ error });
           });
       }
     }
 
     render() {
-      const { Component } = this.state;
+      const { Component, error } = this.state;
+      if (error) {
+        return React.createElement(opts.loading, {
+          error
+        });
+      }
       return (
         Component ?
           <Component {...this.props} /> :

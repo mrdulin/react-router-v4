@@ -8,7 +8,6 @@ import Loading from '../Loading';
 
 import { asyncComponent } from 'common/components/AsyncComponent';
 
-
 // function loader(path, name) {
 //   return () => import(/* webpackChunkName: `${name}` */`${path}`);
 // }

@@ -19,3 +19,4 @@
 1.  [快速开始](./src/demo-1)
 2.  [使用`import()`语法的动态导入](./src/demo-2)
 3.  [使用`require.ensure`的动态导入](./src/demo-3)
+4.  [使用`bundle-loader`的动态导入](./src/demo-4)
