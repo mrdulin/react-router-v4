@@ -1,8 +1,5 @@
-
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 
 class App extends React.Component {
 
@@ -10,7 +7,7 @@ class App extends React.Component {
     return (
       <div>
         <ul>
-          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/home'>Home</Link></li>
           <li><Link to='/about'>About</Link></li>
           <li><Link to='/topics'>Topics</Link></li>
         </ul>

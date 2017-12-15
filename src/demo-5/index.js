@@ -22,17 +22,17 @@ const domains = {
   localhost: 'localhost:2223'
 }
 
-// const hash = localStorage.getItem('demo-5$hash');
+const hash = localStorage.getItem('demo-5$hash');
 console.log('hash: ', hash);
 console.log('document.referrer: ', document.referrer);
-// if (document.referrer.indexOf(domains.baidu) !== -1) {
-//   // window.location.href = hash;
-//   window.location.replace(hash);
-// }
-
-if (document.referrer.indexOf(domains.localhost) !== -1) {
+if (document.referrer.indexOf(domains.baidu) !== -1) {
+  // window.location.href = hash;
   window.location.replace(hash);
 }
+
+// if (document.referrer.indexOf(domains.localhost) !== -1) {
+//   window.location.replace(hash);
+// }
 
 const render = Component => {
   ReactDOM.render(
@@ -40,9 +40,9 @@ const render = Component => {
       <HashRouter>
         <Component>
           <Switch>
-            <Route exact path='/' component={Home}></Route>
-            <Route path='/about' component={About}></Route>
-            <Route path='/topics' component={Topics}></Route>
+            <Route exact path='/home' component={Home}></Route>
+            <Route exact path='/about' component={About}></Route>
+            <Route exact path='/topics' component={Topics}></Route>
             <Route component={NoMatch} />
           </Switch>
         </Component>

@@ -12,10 +12,10 @@ class About extends React.Component {
       localhost: '//localhost:2223'
     };
     console.log('redirect', match.url);
-    // localStorage.setItem('demo-5$hash', '#' + match.url);
+    localStorage.setItem('demo-5$hash', '#' + match.url);
 
-    // window.location.replace(domains.baidu);
-    window.location.replace(domains.localhost);
+    window.location.replace(domains.baidu);
+    // window.location.replace(domains.localhost);
   }
 
   render() {
