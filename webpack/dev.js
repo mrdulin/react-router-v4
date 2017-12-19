@@ -15,6 +15,7 @@ const config = merge(common(target), {
   },
   devtool: 'source-map',
   devServer: {
+    https: true,
     contentBase: target + '/public',
     port,
     host: '0.0.0.0',
