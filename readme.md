@@ -4,22 +4,32 @@
 
 * 开发
 
-  1. `npm start src/demo-x`
+  1.`npm start src/demo-x`
 
 * 预览生产构建
 
-  1. `npm run build`
+  1.`npm run build`
 
-  2. `npm run serve src/demo-x/dist`
+  2.`npm run serve src/demo-x/dist`
 
-`x`: 表示demo目录名后面的序号
+`x`: 表示 demo 目录名后面的序号
 
 ## 例子
 
-1.  [快速开始](./src/demo-1)
-2.  [使用`import()`语法的动态导入](./src/demo-2)
-3.  [使用`require.ensure`的动态导入](./src/demo-3)
-4.  [使用`bundle-loader`的动态导入](./src/demo-4)
-5.  [重定向case-1](./src/demo-5)
-6.  [BrowserRouter配合basename的使用](./src/demo-6)，注意`webpack`配置
-7.  [获取url上的各个参数](./src/demo-7)，注意`webpack`配置
+1.[快速开始](./src/demo-1)
+
+2.[使用`import()`语法的动态导入](./src/demo-2)
+
+3.[使用`require.ensure`的动态导入](./src/demo-3)
+
+4.[使用`bundle-loader`的动态导入](./src/demo-4)
+
+5.[重定向 case-1](./src/demo-5)
+
+6.[`BrowserRouter` 配合 `basename` 的使用](./src/demo-6)，注意`webpack`配置
+
+7.[获取 `url` 上的各个参数](./src/demo-7)，注意`webpack`配置
+
+8.[`createBrowserHistory`, `createHashHistory`, `history.listen`](./src/demo-8)
+
+9.[`<Prompt>`使用](./src/demo-9)
