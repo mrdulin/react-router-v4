@@ -6,17 +6,18 @@ const { resolve, getTarget } = require('./util');
 
 const port = 3000;
 const target = getTarget();
-console.log('target: ', target);
+// console.log('target: ', target);
 
 const config = merge(common(target), {
   output: {
     pathinfo: true,
-    publicPath: 'http://10.0.77.189:3000/'
+    publicPath: 'http://localhost:3000/'
   },
   devtool: 'source-map',
   devServer: {
     // https: true,
     contentBase: target + '/public',
+    historyApiFallback: true,
     port,
     host: '0.0.0.0',
     hot: true

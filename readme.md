@@ -21,3 +21,5 @@
 3.  [使用`require.ensure`的动态导入](./src/demo-3)
 4.  [使用`bundle-loader`的动态导入](./src/demo-4)
 5.  [重定向case-1](./src/demo-5)
+6.  [BrowserRouter配合basename的使用](./src/demo-6)，注意`webpack`配置
+7.  [获取url上的各个参数](./src/demo-7)，注意`webpack`配置
