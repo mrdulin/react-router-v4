@@ -9,12 +9,12 @@ class About extends React.Component {
     const { match } = this.props;
     const domains = {
       baidu: '//www.baidu.com',
-      localhost: '//localhost:2223'
+      localhost: '//10.0.77.189:2223/测试微信应用间跳转问题/app-3'
     };
     console.log('redirect', match.url);
     localStorage.setItem('demo-5$hash', '#' + match.url);
 
-    window.location.replace(domains.baidu);
+    window.location.replace(domains.localhost);
     // window.location.replace(domains.localhost);
   }
 

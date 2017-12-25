@@ -11,11 +11,11 @@ console.log('target: ', target);
 const config = merge(common(target), {
   output: {
     pathinfo: true,
-    publicPath: '/'
+    publicPath: 'http://10.0.77.189:3000/'
   },
   devtool: 'source-map',
   devServer: {
-    https: true,
+    // https: true,
     contentBase: target + '/public',
     port,
     host: '0.0.0.0',
