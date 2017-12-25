@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev":
-      "webpack --progress --display-error-details --config webpack/dev.js",
+    "build:dev": "webpack --progress --display-error-details --config webpack/dev.js",
     "build": "webpack --progress --profile --config webpack/prod.js",
     "start": "webpack-dev-server --progress --config webpack/dev.js",
     "serve": "http-server -p 3000 -g -c20"
@@ -35,6 +34,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "bundle-loader": "^0.5.5",
     "clean-webpack-plugin": "^0.1.17",

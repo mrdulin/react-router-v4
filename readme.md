@@ -32,4 +32,4 @@
 
 8.[`createBrowserHistory`, `createHashHistory`, `history.listen`](./src/demo-8)
 
-9.[`<Prompt>`使用](./src/demo-9)
+9.[`<Prompt>`，`history.block`和`getUserConfirmation`的使用](./src/demo-9)
