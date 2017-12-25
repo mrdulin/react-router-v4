@@ -18,9 +18,18 @@ class Popup extends React.PureComponent {
     super();
   }
 
+  getCustomCallbacks() {
+    const { listeners, namespace } = this.props;
+    let callbacks = {};
+    if (namespace) {
+      callbacks = listeners[namespace] || {};
+    }
+    return callbacks;
+  }
+
   onCancel = () => {
     const { actions, cancelCallback, listeners, namespace } = this.props;
-    const { cancel } = listeners[namespace];
+    const { cancel } = this.getCustomCallbacks();
     cancel && cancel();
     cancelCallback();
     actions.close();
@@ -28,7 +37,7 @@ class Popup extends React.PureComponent {
 
   onConfirm = () => {
     const { actions, confirmCallback, listeners, namespace } = this.props;
-    const { confirm } = listeners[namespace];
+    const { confirm } = this.getCustomCallbacks();
     confirm && confirm();
     confirmCallback();
     actions.close();

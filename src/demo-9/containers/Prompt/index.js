@@ -21,30 +21,33 @@ class PromptPage extends React.Component {
 
     //使用history对象的block方法，效果和使用<Prompt>组件一样
     //可以调用history.block返回的方法，禁用用户离开当前路由的提示
+    // 1.
     // this.unblock = this.props.history.block('Are you sure you want to leave?');
-    this.unblock = history.block((location, action) => {
-      console.log(location, action);
-      if (!this.state.value) {
-        //自定义处理逻辑
-        actions.bindEvent(namespace, {
-          confirm: this.onPopupConfirm,
-          cancel: this.onPopupCancel
-        });
-        return JSON.stringify({ message: '你确定离开此页面吗', namespace });
 
-        // 这里的思路是传递一个要显示的Popup的props对象到getUserConfirmation方法中，在getUserConfirmation方法中dispatch action打开popup
-        // 然而，没有进入getUserConfirmation方法，貌似必须是字符串才可以传递过去，但如果用JSON.stringify，格式化出来的字符串中方法会被删除
-        // return {
-        //   text: '你确定离开此页面吗？',
-        //   confirmCallback: this.onPopupConfirm,
-        //   cancelCallback: this.onPopupCancel
-        // };
-      }
-    });
+    // 2.
+    // this.unblock = history.block((location, action) => {
+    //   console.log(location, action);
+    //   if (!this.state.value) {
+    //     //自定义处理逻辑
+    //     actions.bindEvent(namespace, {
+    //       confirm: this.onPopupConfirm,
+    //       cancel: this.onPopupCancel
+    //     });
+    //     return JSON.stringify({ message: '你确定离开此页面吗', namespace });
+
+    //     // 这里的思路是传递一个要显示的Popup的props对象到getUserConfirmation方法中，在getUserConfirmation方法中dispatch action打开popup
+    //     // 然而，没有进入getUserConfirmation方法，貌似必须是字符串才可以传递过去，但如果用JSON.stringify，格式化出来的字符串中方法会被删除
+    //     // return {
+    //     //   text: '你确定离开此页面吗？',
+    //     //   confirmCallback: this.onPopupConfirm,
+    //     //   cancelCallback: this.onPopupCancel
+    //     // };
+    //   }
+    // });
   }
 
   componentWillUnmount() {
-    this.unblock();
+    // this.unblock();
   }
 
   onPopupConfirm = () => {
@@ -105,7 +108,10 @@ class PromptPage extends React.Component {
           }
         /> */}
 
-        {/* <Prompt when={!value} message="are you sure?" /> */}
+        <Prompt
+          when={!value}
+          message={JSON.stringify({ message: '你确定离开此页面吗？' })}
+        />
       </div>
     );
   }
