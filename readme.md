@@ -37,3 +37,7 @@
 9.[`<Prompt>`，`history.block`和`getUserConfirmation`的使用](./src/demo-9)
 
 10.[`react-transition-group v2`和`react-router v4`的页面过场动画](./src/demo-10)
+
+11.[`react-transition-group v2`和`react-router v4`的页面过场动画 - 2](./src/demo-10)
+
+12.[`<Prompt>`，`history.block`和`getUserConfirmation`的使用 - 2](./src/demo-12) - 未实现
