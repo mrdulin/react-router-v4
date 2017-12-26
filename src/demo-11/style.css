@@ -1,0 +1,83 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  height: 44px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  top: 45px;
+  bottom: 45px;
+  overflow: auto;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 44px;
+  width: 100%;
+  border-top: 1px solid #ddd;
+}
+
+.slide-in-right-enter {
+  transform: translate3d(100%, 0, 0);
+  visibility: visible;
+}
+
+.slide-in-right-enter.slide-in-right-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition: transform 2s ease-in-out;
+}
+
+.slide-in-right-exit {
+  transform: translate3d(0, 0, 0);
+}
+
+.slide-in-right-exit.slide-in-right-exit-active {
+  transform: translate3d(-100%, 0, 0);
+  visibility: visible;
+  transition: transform 2s ease-in-out;
+}
+
+.slide-out-right-enter {
+  transform: translate3d(0, 0, 0);
+  visibility: visible;
+}
+
+.slide-out-right-enter.slide-out-right-enter-active {
+  transform: translate3d(100%, 0, 0);
+  transition: transform 2s ease-in-out;
+}
+
+.slide-out-right-exit {
+  transform: translate3d(0, 0, 0);
+}
+
+.slide-out-right-exit.slide-out-right-exit-active {
+  transform: translate3d(100%, 0, 0);
+  visibility: visible;
+  transition: transform 2s ease-in-out;
+}
