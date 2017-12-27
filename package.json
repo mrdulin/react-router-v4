@@ -9,7 +9,7 @@
       "webpack --progress --display-error-details --config webpack/dev.js",
     "build": "webpack --progress --profile --config webpack/prod.js",
     "start": "webpack-dev-server --progress --config webpack/dev.js",
-    "serve": "http-server -p 3000 -g -c20"
+    "serve": "http-server -p 3000 -g -c200"
   },
   "repository": {
     "type": "git",
