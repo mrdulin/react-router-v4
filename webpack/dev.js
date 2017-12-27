@@ -20,7 +20,15 @@ const config = merge(common(target), {
     historyApiFallback: true,
     port,
     host: '0.0.0.0',
-    hot: true
+    hot: true,
+    proxy: [
+      {
+        //http://localhost:3000/pairs -> http://data.gate.io/api2/1/paris
+        context: ['/pairs', '/marketinfo', '/marketlist', '/tickers'],
+        target: 'http://data.gate.io/api2/1',
+        changeOrigin: true
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
