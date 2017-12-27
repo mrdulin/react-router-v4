@@ -1,7 +1,7 @@
 import React from 'react';
 import Popup from '../../components/Popup';
 
-class About extends React.PureComponent {
+class Search extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -17,18 +17,17 @@ class About extends React.PureComponent {
     this.unblock();
   }
   block = (location, action) => {
-    console.log('history block: ', location, action);
     const allowTransition = !this.state.value;
     return JSON.stringify({ allowTransition, text: '' });
   };
   onConfirm = () => {
-    console.log('confirm', Popup.allowTransitionCallback);
     setTimeout(() => {
       Popup.allowTransitionCallback(true);
     }, 1000);
   };
   onCancel = () => {
     console.log('cancel');
+    Popup.allowTransitionCallback(false);
   };
   onChange = e => {
     const target = e.target;
@@ -39,20 +38,24 @@ class About extends React.PureComponent {
     const { value } = this.state;
     return (
       <div>
-        <h1>About Page</h1>
+        <h1>Search Page</h1>
         <form>
           <input
-            type="text"
-            placeholder="随便输入"
+            type="search"
+            placeholder="随便搜索"
             value={value}
             onChange={this.onChange}
           />
         </form>
         <div>
           <Popup
-            content={<div>你确定要离开吗？</div>}
-            onConfirm={this.onConfirm}
-            onCancel={this.onCancel}
+            content={<div>你确定要离开当前页面吗？</div>}
+            footer={{
+              buttons: [
+                { text: 'cancel', onClick: this.onCancel },
+                { text: 'confirm', onClick: this.onConfirm }
+              ]
+            }}
           />
         </div>
       </div>
@@ -60,4 +63,4 @@ class About extends React.PureComponent {
   }
 }
 
-export default About;
+export default Search;

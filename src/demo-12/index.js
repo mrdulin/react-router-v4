@@ -9,6 +9,8 @@ import { AppContainer } from 'react-hot-loader';
 import App from './containers/app';
 import Home from './containers/home';
 import About from './containers/about';
+import Search from './containers/Search';
+import Popup from './components/Popup';
 
 import './style.css';
 
@@ -16,12 +18,9 @@ const $portal = document.getElementById('portal');
 const getConfirmation = (stringMessage = '', callback) => {
   console.log('stringMessage: ', stringMessage);
   const message = JSON.parse(stringMessage);
-  const $popup = $portal.firstElementChild;
-  if ($popup) {
-    $popup.style.display = 'block';
-    const allowTransition = message.allowTransition;
-    callback(allowTransition);
-  }
+  Popup.allowTransitionCallback = callback;
+  Popup.show();
+  callback(message.allowTransition);
 };
 
 const render = Component => {
@@ -32,6 +31,7 @@ const render = Component => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
+            <Route path="/search" component={Search} />
           </Switch>
         </Component>
       </BrowserRouter>

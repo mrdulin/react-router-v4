@@ -12,6 +12,9 @@ class App extends React.Component {
           <li>
             <Link to="/about">About</Link>
           </li>
+          <li>
+            <Link to="/search">search</Link>
+          </li>
         </ul>
         <hr />
         {this.props.children}
