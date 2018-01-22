@@ -1,8 +1,8 @@
-import React from 'react';
-import './style.css';
-import { Link } from 'react-router-dom';
-import Container from '../app/container';
-import { Transition } from 'react-transition-group';
+import React from "react";
+import "./style.css";
+import { Link } from "react-router-dom";
+import Container from "../app/container";
+import { Transition } from "react-transition-group";
 
 const duration = 300;
 const defaultStyle = {

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev":
-      "webpack --progress --display-error-details --config webpack/dev.js",
+    "build:dev": "webpack --progress --display-error-details --config webpack/dev.js",
     "build": "webpack --progress --profile --config webpack/prod.js",
     "start": "webpack-dev-server --progress --config webpack/dev.js",
     "serve": "http-server -p 3000 -g -c200"
@@ -42,7 +41,10 @@
     "clean-webpack-plugin": "^0.1.17",
     "compression-webpack-plugin": "^1.0.1",
     "css-loader": "^0.28.7",
+    "eslint": "^4.16.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.5.0",
+    "eslint-plugin-react": "^7.5.1",
     "html-webpack-plugin": "^2.30.1",
     "http-server": "^0.10.0",
     "prettier": "1.9.2",
