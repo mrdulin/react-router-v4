@@ -1,20 +1,20 @@
-require('react-hot-loader/patch');
+require("react-hot-loader/patch");
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { AppContainer } from 'react-hot-loader';
+import { AppContainer } from "react-hot-loader";
 
-import App from './containers/app';
-import Home from './containers/home';
-import About from './containers/about';
-import Login from './containers/Login';
-import User from './containers/User';
+import App from "./containers/app";
+import Home from "./containers/home";
+import About from "./containers/about";
+import Login from "./containers/Login";
+import User from "./containers/User";
 
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from "./components/PrivateRoute";
 
-import './style.css';
+import "./style.css";
 
 const render = Component => {
   ReactDOM.render(
@@ -30,14 +30,14 @@ const render = Component => {
         </Component>
       </BrowserRouter>
     </AppContainer>,
-    document.getElementById('app')
+    document.getElementById("app")
   );
 };
 
 render(App);
 
-if (module.hot && process.env.NODE_ENV !== 'production') {
-  module.hot.accept('./containers/app', () => {
+if (module.hot && process.env.NODE_ENV !== "production") {
+  module.hot.accept("./containers/app", () => {
     render(App);
   });
 }

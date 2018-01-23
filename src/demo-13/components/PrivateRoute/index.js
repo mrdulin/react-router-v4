@@ -1,17 +1,18 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import authService from '../../services/auth';
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import authService from "../../services/auth";
+import PropTypes from "prop-types";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: PrivateComponent, ...rest }) => (
   <Route
     {...rest}
     render={props =>
       authService.isAuthenticated ? (
-        <Component {...props} />
+        <PrivateComponent {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: '/login',
+            pathname: "/login",
             state: { from: props.location }
           }}
         />
@@ -19,5 +20,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     }
   />
 );
+
+PrivateRoute.propTypes = {
+  component: PropTypes.node,
+  location: PropTypes.object
+};
 
 export default PrivateRoute;

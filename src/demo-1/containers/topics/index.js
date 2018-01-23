@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import Topic from './components/Topic';
+import React from "react";
+import { Link, Route } from "react-router-dom";
+import Topic from "./components/Topic";
+import PropTypes from "prop-types";
 
-export default ({ match }) => (
+const Topics = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
@@ -18,6 +19,16 @@ export default ({ match }) => (
     </ul>
 
     <Route path={`${match.url}/:topicId`} component={Topic} />
-    <Route exact path={match.url} render={() => <h3>Please select a topic.</h3>} />
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
+    />
   </div>
-)
+);
+
+Topics.propTypes = {
+  match: PropTypes.object.isRequired
+};
+
+export default Topics;

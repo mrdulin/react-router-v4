@@ -1,7 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 class About extends React.Component {
+  static defaultProps = {
+    aboutReducers: {}
+  };
+
+  static propTypes = {
+    aboutReducers: PropTypes.object
+  };
+
   render() {
     return (
       <div>

@@ -1,5 +1,5 @@
-export function homeReducers(state, action) {
+export function homeReducers() {
   return {
-    name: 'home reducers'
-  }
+    name: "home reducers"
+  };
 }

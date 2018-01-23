@@ -1,9 +1,9 @@
-import { asyncLoad } from '../../store';
-import Loading from '../Loading';
+import { asyncLoad } from "../../store";
+import Loading from "../Loading";
 
 const NoMatchModules = asyncLoad({
-  loader: () => import(/* webpackChunkName: 'about' */'./'),
+  loader: () => import(/* webpackChunkName: 'about' */ "./"),
   loading: Loading
-})
+});
 
-export { NoMatchModules }
+export { NoMatchModules };

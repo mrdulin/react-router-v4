@@ -1,9 +1,11 @@
-import React from 'react';
-export default (props) => {
-  console.log('loading props: ', props);
+import React from "react";
+
+const Loading = () => {
   return (
     <div>
       <p>loading</p>
     </div>
-  )
-}
+  );
+};
+
+export default Loading;

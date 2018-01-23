@@ -1,5 +1,5 @@
 export function appReducers() {
   return {
-    name: 'app reducer'
-  }
+    name: "app reducer"
+  };
 }

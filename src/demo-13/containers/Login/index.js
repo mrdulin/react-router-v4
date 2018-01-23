@@ -1,9 +1,12 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
-
-import auth from '../../services/auth';
+import React from "react";
+import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import auth from "../../services/auth";
 
 class Login extends React.Component {
+  static propTypes = {
+    location: PropTypes.object
+  };
   constructor() {
     super();
     this.state = {
@@ -17,11 +20,11 @@ class Login extends React.Component {
         this.setState({ redirectToReferrer: true });
       })
       .catch(e => {
-        console.log(e);
+        throw e;
       });
   };
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
       return <Redirect to={from} />;

@@ -1,9 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 const moduleDefaultExport = module => module.default || module;
 
 function asyncComponent(opts) {
   class AsyncComponent extends PureComponent {
+    static propTypes = {
+      location: PropTypes.object
+    };
     constructor(props) {
       super(props);
 
@@ -15,11 +19,12 @@ function asyncComponent(opts) {
 
     componentDidMount() {
       if (opts && opts.loader) {
-        opts.loader()
+        opts
+          .loader()
           .then(moduleDefaultExport)
           .then(Component => {
-            if (this.props.location.pathname === '/contact') {
-              return Promise.reject('模拟模块加载失败的情况');
+            if (this.props.location.pathname === "/contact") {
+              return Promise.reject("模拟模块加载失败的情况");
             }
             this.setState({ Component });
           })
@@ -36,17 +41,11 @@ function asyncComponent(opts) {
           error
         });
       }
-      return (
-        Component ?
-          <Component {...this.props} /> :
-          null
-      )
+      return Component ? <Component {...this.props} /> : null;
     }
   }
 
   return AsyncComponent;
 }
 
-export {
-  asyncComponent
-}
+export { asyncComponent };

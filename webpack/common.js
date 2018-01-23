@@ -1,10 +1,10 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const webpack = require('webpack');
-const { resolve } = require('./util');
-const pkg = require('../package.json');
+const webpack = require("webpack");
+const { resolve } = require("./util");
+const pkg = require("../package.json");
 
-const dist = 'dist';
+const dist = "dist";
 const vendor = Object.keys(pkg.dependencies);
 
 module.exports = function config(src) {
@@ -13,13 +13,13 @@ module.exports = function config(src) {
       vendor
     },
     output: {
-      filename: 'scripts/[name].bundle.js',
-      chunkFilename: 'scripts/[id].[name].chunk.js',
+      filename: "scripts/[name].bundle.js",
+      chunkFilename: "scripts/[id].[name].chunk.js",
       path: resolve(src, dist)
     },
     resolve: {
       alias: {
-        common: resolve('src/common')
+        common: resolve("src/common")
       }
     },
     module: {
@@ -29,13 +29,13 @@ module.exports = function config(src) {
           exclude: /(node_modules)/,
           use: [
             {
-              loader: 'babel-loader'
+              loader: "babel-loader"
             }
           ]
         },
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+          use: ["style-loader", "css-loader"]
         }
       ]
     },
@@ -44,12 +44,14 @@ module.exports = function config(src) {
         root: src
       }),
       new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function (module) {
-          if (module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+        name: "vendor",
+        minChunks: function(module) {
+          if (module.resource && /^.*\.(css|scss)$/.test(module.resource)) {
             return false;
           }
-          return module.context && module.context.indexOf("node_modules") !== -1;
+          return (
+            module.context && module.context.indexOf("node_modules") !== -1
+          );
         }
       }),
       new webpack.optimize.CommonsChunkPlugin({
@@ -57,5 +59,5 @@ module.exports = function config(src) {
         minChunks: Infinity
       })
     ]
-  }
+  };
 };

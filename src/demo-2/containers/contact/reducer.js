@@ -1,5 +1,5 @@
-export function contactReducers(state, action) {
+export function contactReducers() {
   return {
-    name: 'contact reducers'
-  }
+    name: "contact reducers"
+  };
 }

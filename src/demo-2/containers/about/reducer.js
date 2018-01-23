@@ -1,5 +1,5 @@
-export function aboutReducers(state, action) {
+export function aboutReducers() {
   return {
-    name: 'about reducers'
-  }
+    name: "about reducers"
+  };
 }

@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 
-export default () => (
+const Card = () => (
   <div>
     <p>I am a async card</p>
   </div>
-)
+);
+
+export default Card;

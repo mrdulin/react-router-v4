@@ -1,12 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import auth from '../../services/auth';
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import auth from "../../services/auth";
 
 class Home extends React.Component {
+  static propTypes = {
+    history: PropTypes.object
+  };
+
   signout = () => {
     const { history } = this.props;
     auth.signout().then(() => {
-      history.push('/');
+      history.push("/");
     });
   };
   render() {

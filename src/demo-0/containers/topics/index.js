@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import Topic from './components/Topic';
+import React from "react";
+import { Link, Route } from "react-router-dom";
+import PropTypes from "prop-types";
+import Topic from "./components/Topic";
 
-export default ({ match }) => (
+const Topics = ({ match }) => (
   <div>
     <h2>Topics</h2>
     <ul>
@@ -25,3 +26,9 @@ export default ({ match }) => (
     />
   </div>
 );
+
+Topics.propTypes = {
+  match: PropTypes.object.isRequired
+};
+
+export default Topics;

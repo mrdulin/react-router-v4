@@ -1,10 +1,15 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 const moduleDefaultExport = module => module.default || module;
 
 export default function AsyncComponentFactory(injectAsyncReducer) {
   return function asyncComponent(opts) {
     class AsyncComponent extends PureComponent {
+      static propTypes = {
+        location: PropTypes.object
+      };
+
       constructor(props) {
         super(props);
 
@@ -17,29 +22,27 @@ export default function AsyncComponentFactory(injectAsyncReducer) {
       componentDidMount() {
         if (opts) {
           const { loader, reducers } = opts;
-          Promise.all([this.loadReducer(reducers), this.loadComponent(loader)])
-            .then(([_, Component]) => {
-              if (this.props.location.pathname === '/contact') {
-                return Promise.reject('模拟模块加载失败的情况');
+          Promise.all([this.loadComponent(loader), this.loadReducer(reducers)])
+            .then(([Component]) => {
+              if (this.props.location.pathname === "/contact") {
+                return Promise.reject("模拟模块加载失败的情况");
               }
               this.setState({ Component });
             })
             .catch(error => {
               this.setState({ error });
             });
-
         }
       }
 
       loadComponent(loader) {
-        return loader()
-          .then(moduleDefaultExport);
+        return loader().then(moduleDefaultExport);
       }
 
       loadReducer(reducer) {
         if (Array.isArray(reducer)) {
           return Promise.all(reducer.map(r => this.loadReducer(r)));
-        } else if (typeof reducer === 'object') {
+        } else if (typeof reducer === "object") {
           const key = Object.keys(reducer)[0];
           return reducer[key]().then(r => {
             injectAsyncReducer(key, moduleDefaultExport(r));
@@ -54,19 +57,12 @@ export default function AsyncComponentFactory(injectAsyncReducer) {
             error
           });
         }
-        return (
-          Component ?
-            <Component {...this.props} /> :
-            null
-        )
+        return Component ? <Component {...this.props} /> : null;
       }
     }
 
     return AsyncComponent;
-  }
+  };
 }
 
-
-export {
-  AsyncComponentFactory
-}
+export { AsyncComponentFactory };

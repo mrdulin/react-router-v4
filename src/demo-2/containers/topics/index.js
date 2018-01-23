@@ -1,9 +1,15 @@
-import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import Topic from './components/Topic';
-import { connect } from 'react-redux';
+import React from "react";
+import { Link, Route } from "react-router-dom";
+import Topic from "./components/Topic";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class Topics extends React.Component {
+  static propTypes = {
+    match: PropTypes.object,
+    topicsReducers: PropTypes.object
+  };
+
   render() {
     const { match } = this.props;
     return (
@@ -24,12 +30,14 @@ class Topics extends React.Component {
         <p>{this.props.topicsReducers.name}</p>
 
         <Route path={`${match.url}/:topicId`} component={Topic} />
-        <Route exact path={match.url} render={() => <h3>Please select a topic.</h3>} />
+        <Route
+          exact
+          path={match.url}
+          render={() => <h3>Please select a topic.</h3>}
+        />
       </div>
     );
   }
 }
 
-export default connect(
-  (({ topicsReducers }) => ({ topicsReducers }))
-)(Topics)
+export default connect(({ topicsReducers }) => ({ topicsReducers }))(Topics);

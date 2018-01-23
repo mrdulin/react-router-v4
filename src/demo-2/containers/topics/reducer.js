@@ -1,5 +1,5 @@
-export function topicsReducers(state, action) {
+export function topicsReducers() {
   return {
-    name: 'topics reducers'
-  }
+    name: "topics reducers"
+  };
 }

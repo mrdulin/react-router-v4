@@ -1,7 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class Home extends React.Component {
+  static propTypes = {
+    homeReducers: PropTypes.object
+  };
   render() {
     return (
       <div>
@@ -12,10 +16,6 @@ class Home extends React.Component {
   }
 }
 
-export default connect(
-  function mapStateToProps({ homeReducers }) {
-    return { homeReducers };
-  }
-)(Home);
-
-
+export default connect(function mapStateToProps({ homeReducers }) {
+  return { homeReducers };
+})(Home);
