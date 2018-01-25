@@ -5,7 +5,7 @@ const { resolve } = require("./util");
 const pkg = require("../package.json");
 
 const dist = "dist";
-const vendor = Object.keys(pkg.dependencies);
+const vendor = Object.keys(pkg.dependencies).concat(["core-js/es6/map"]);
 
 module.exports = function config(src) {
   return {
