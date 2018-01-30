@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PT from 'prop-types';
 
 const $portal = document.getElementById('portal');
 class Popup extends React.Component {
@@ -21,6 +22,14 @@ class Popup extends React.Component {
     onCancel: () => {}
   };
 
+  static propTypes = {
+    content: PT.node,
+    header: PT.node,
+    footer: PT.object,
+    onConfirm: PT.func,
+    onCancel: PT.func
+  };
+
   constructor() {
     super();
     this.buttons = [
@@ -33,10 +42,6 @@ class Popup extends React.Component {
         onClick: this.onConfirm
       }
     ];
-  }
-
-  componentDidMount() {
-    Popup.$el = ReactDOM.findDOMNode(this);
   }
 
   onConfirm = () => {
@@ -68,7 +73,11 @@ class Popup extends React.Component {
     }
 
     return ReactDOM.createPortal(
-      <div id="popup" style={{ display: 'none' }}>
+      <div
+        id="popup"
+        style={{ display: 'none' }}
+        ref={ref => (Popup.$el = ref)}
+      >
         {header ? <div className="popup-header">header</div> : null}
         <div className="popup-content">{content}</div>
         <div className="popup-footer">

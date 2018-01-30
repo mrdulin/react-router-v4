@@ -14,7 +14,6 @@ import Popup from './components/Popup';
 
 import './style.css';
 
-const $portal = document.getElementById('portal');
 const getConfirmation = (stringMessage = '', callback) => {
   console.log('stringMessage: ', stringMessage);
   const message = JSON.parse(stringMessage);

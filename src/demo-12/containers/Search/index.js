@@ -16,7 +16,7 @@ class Search extends React.PureComponent {
   componentWillUnmount() {
     this.unblock();
   }
-  block = (location, action) => {
+  block = () => {
     const allowTransition = !this.state.value;
     return JSON.stringify({ allowTransition, text: '' });
   };

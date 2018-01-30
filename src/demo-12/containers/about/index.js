@@ -1,7 +1,11 @@
 import React from 'react';
 import Popup from '../../components/Popup';
+import PT from 'prop-types';
 
 class About extends React.PureComponent {
+  static propTypes = {
+    history: PT.object
+  };
   constructor() {
     super();
     this.state = {
