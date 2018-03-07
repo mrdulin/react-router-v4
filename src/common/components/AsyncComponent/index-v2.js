@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 const moduleDefaultExport = module => module.default || module;
 
@@ -24,8 +24,8 @@ export default function AsyncComponentFactory(injectAsyncReducer) {
           const { loader, reducers } = opts;
           Promise.all([this.loadComponent(loader), this.loadReducer(reducers)])
             .then(([Component]) => {
-              if (this.props.location.pathname === "/contact") {
-                return Promise.reject("模拟模块加载失败的情况");
+              if (this.props.location.pathname === '/contact') {
+                return Promise.reject('模拟模块加载失败的情况');
               }
               this.setState({ Component });
             })
@@ -42,7 +42,7 @@ export default function AsyncComponentFactory(injectAsyncReducer) {
       loadReducer(reducer) {
         if (Array.isArray(reducer)) {
           return Promise.all(reducer.map(r => this.loadReducer(r)));
-        } else if (typeof reducer === "object") {
+        } else if (typeof reducer === 'object') {
           const key = Object.keys(reducer)[0];
           return reducer[key]().then(r => {
             injectAsyncReducer(key, moduleDefaultExport(r));

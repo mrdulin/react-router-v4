@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { Link, Switch, Route } from 'react-router-dom';
 
-import { HomeModules } from "../home/async";
-import { AboutModules } from "../about/async";
-import { TopicModules } from "../topics/async";
-import { ContactModules } from "../contact/async";
-import { NoMatchModules } from "../NoMatch/async";
+import { HomeModules } from '../home/async';
+import { AboutModules } from '../about/async';
+import { TopicModules } from '../topics/async';
+import { ContactModules } from '../contact/async';
+import { NoMatchModules } from '../NoMatch/async';
 class App extends React.Component {
   render() {
     return (

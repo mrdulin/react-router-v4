@@ -2,7 +2,7 @@ require('react-hot-loader/patch');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
@@ -24,7 +24,7 @@ import './style.css';
 
 //基于redux的自定义实现
 const getConfirmation = (dataString, callback) => {
-  console.log(dataString);
+  // console.log(dataString);
   const data = JSON.parse(dataString);
   let allowTransition = false;
   store.dispatch(

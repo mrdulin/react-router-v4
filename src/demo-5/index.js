@@ -1,5 +1,4 @@
-
-require("react-hot-loader/patch")
+require('react-hot-loader/patch');
 
 // alert('demo-5');
 
@@ -41,9 +40,9 @@ const render = Component => {
       <HashRouter>
         <Component>
           <Switch>
-            <Route exact path='/home' component={Home}></Route>
-            <Route exact path='/about' component={About}></Route>
-            <Route exact path='/topics' component={Topics}></Route>
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/topics" component={Topics} />
             <Route component={NoMatch} />
           </Switch>
         </Component>
@@ -51,10 +50,12 @@ const render = Component => {
     </AppContainer>,
     document.getElementById('app')
   );
-}
+};
 
 render(App);
 
 if (module.hot && process.env.NODE_ENV !== 'production') {
-  module.hot.accept('./containers/app', () => { render(App) })
+  module.hot.accept('./containers/app', () => {
+    render(App);
+  });
 }

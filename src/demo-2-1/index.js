@@ -11,6 +11,8 @@ import { asyncComponent } from 'common/components/AsyncComponent';
 
 import './style.css';
 
+// const loader = (path, name) => () => import(/* webpackChunkName:`${name}`*/ `${path}`);
+
 const render = Component => {
   ReactDOM.render(
     <AppContainer>
@@ -31,23 +33,10 @@ const render = Component => {
                 loading: Loading
               })}
             />
-            {/* 在main文件中进行错误处理 */}
-            <Route
-              path="/topics"
-              component={asyncComponent({
-                loader: require('./containers/topics/main').default
-              })}
-            />
             <Route
               path="/contact"
               component={asyncComponent({
                 loader: require('./containers/contact/main').default
-              })}
-            />
-            <Route
-              path="/contact"
-              component={asyncComponent({
-                loader: require('./containers/NoMatch/main').default
               })}
             />
           </Switch>

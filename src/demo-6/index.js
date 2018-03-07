@@ -1,17 +1,17 @@
-require("react-hot-loader/patch");
+require('react-hot-loader/patch');
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { AppContainer } from "react-hot-loader";
+import { AppContainer } from 'react-hot-loader';
 
-import App from "./containers/App";
-import Home from "./containers/Home";
-import Search from "./containers/Search";
-import NoMatch from "./containers/NoMatch";
+import App from './containers/App';
+import Home from './containers/Home';
+import Search from './containers/Search';
+import NoMatch from './containers/NoMatch';
 
-import "./style.css";
+import './style.css';
 
 // 加了basename后的url为
 //http://localhost:3000/demo-6/book/home
@@ -30,14 +30,14 @@ const render = Component => {
         </Component>
       </BrowserRouter>
     </AppContainer>,
-    document.getElementById("app")
+    document.getElementById('app')
   );
 };
 
 render(App);
 
-if (module.hot && process.env.NODE_ENV !== "production") {
-  module.hot.accept("./containers/App", () => {
+if (module.hot && process.env.NODE_ENV !== 'production') {
+  module.hot.accept('./containers/App', () => {
     render(App);
   });
 }

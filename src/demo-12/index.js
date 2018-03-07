@@ -15,7 +15,7 @@ import Popup from './components/Popup';
 import './style.css';
 
 const getConfirmation = (stringMessage = '', callback) => {
-  console.log('stringMessage: ', stringMessage);
+  // console.log('stringMessage: ', stringMessage);
   const message = JSON.parse(stringMessage);
   Popup.allowTransitionCallback = callback;
   Popup.show();
